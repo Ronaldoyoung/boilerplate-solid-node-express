@@ -1,5 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
+import config from '@/config';
+import routes from '@/api';
 
 export default ({ app }: { app: express.Application }) => {
   /**
@@ -16,4 +18,7 @@ export default ({ app }: { app: express.Application }) => {
 
   app.use(cors());
   app.use(express.json());
+
+  // Load API routes
+  app.use(config.api.prefix, routes());
 }

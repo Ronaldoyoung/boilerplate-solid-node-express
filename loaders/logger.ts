@@ -29,7 +29,8 @@ const options = {
 const logger = createLogger({
   level: 'info',
   format: combine(format.json(), timestamp(), prettyPrint()),
-  transports: [new transports.File(options.file)],
+  // transports: [new transports.File(options.file)],
+  transports: [new transports.Console(options.console)],
 });
 
 
