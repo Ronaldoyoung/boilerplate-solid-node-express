@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { dbType } from '.';
-import { sequelize } from './sequelize';
+import { sequelize } from '@/loaders/sequelize';
 
 class User extends Model {
   public readonly id!: number;
@@ -28,7 +28,7 @@ User.init({
   sequelize,
   modelName: 'User',
   tableName: 'user',
-  charset: 'utf-8',
+  charset: 'utf8',
   collate: 'utf8_general_ci',
 });
 
