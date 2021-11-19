@@ -4,7 +4,10 @@ import { Logger } from 'winston';
 
 @Service()
 export default class AuthService {
-  constructor(@Inject('logger') private logger: Logger){}
+  constructor(
+    @Inject('userModel') private userModel: Models.UserModel,
+    @Inject('logger') private logger: Logger
+  ) { }
 
   public async SignUp(userInput: IUserInputDTO) {
     try {

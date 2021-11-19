@@ -3,12 +3,13 @@
   "compilerOptions": {
     "strict": true,
     "module": "Commonjs",
-    "target": "es5",
+    "target": "es2017",
     "sourceMap": true,
     "allowJs": true,
     "outDir": "./dist",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
   },
   "exclude": ["node_modules"]
 }
