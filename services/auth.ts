@@ -1,19 +1,23 @@
-import { Service, Inject } from "typedi";
-import { IUserInputDTO } from '@/interfaces/IUser'
+import { Service, Inject } from 'typedi';
+import { IUserInputDTO, IUser } from '@/interfaces/IUser';
 import { Logger } from 'winston';
+import User from 'models/user';
+import { Model, DataTypes } from 'sequelize';
 
 @Service()
 export default class AuthService {
   constructor(
-    @Inject('userModel') private userModel: Models.UserModel,
-    @Inject('logger') private logger: Logger
-  ) { }
+    @Inject('userModel') private userModel: Model,
+    @Inject('logger') private logger: Logger,
+  ) {}
 
-  public async SignUp(userInput: IUserInputDTO) {
+  public async SignUp(userInputDTO: IUserInputDTO): Promise<{ userRecord: IUser }> {
     try {
-      const user = 'test~~';
+      const userRecord: IUser = await User.create({
+        ...userInputDTO,
+      });
 
-      return { user };
+      return { userRecord };
     } catch (err) {
       throw err;
     }
